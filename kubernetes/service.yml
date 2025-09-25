@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: wisecow-service
+  namespace: wisecow
+spec:
+  type: ClusterIP   # Keeps service internal, Ingress will expose it
+  selector:
+    app: wisecow
+  ports:
+    - protocol: TCP
+      port: 80           # Port the service exposes to ingress
+      targetPort: 4499   # Port your pod is listening on
+
