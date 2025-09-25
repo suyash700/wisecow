@@ -3,7 +3,7 @@ name: CI/CD Pipeline
 on:
   push:
     branches:
-      - main
+      - main   # Trigger on pushes to main branch
 
 jobs:
   build-and-deploy:
@@ -37,9 +37,15 @@ jobs:
         mkdir -p $HOME/.kube
         echo "${{ secrets.KUBECONFIG }}" | base64 --decode > $HOME/.kube/config
 
+    - name: Set KUBECONFIG env globally
+      run: echo "KUBECONFIG=$HOME/.kube/config" >> $GITHUB_ENV
+
+    - name: Check kubeconfig
+      run: |
+        ls -la $HOME/.kube
+        cat $HOME/.kube/config
+
     - name: Deploy to Kubernetes
-      env:
-        KUBECONFIG: $HOME/.kube/config
       run: |
         kubectl apply -f kubernetes/namespace.yml
         kubectl apply -f kubernetes/deployment.yml
