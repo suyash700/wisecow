@@ -1,7 +1,8 @@
 # Accuknox DevOps Trainee Practical Assessment
 
 
-![Uploading image.png…]()
+![WhatsApp Image 2025-09-30 at 2 02 03 PM](https://github.com/user-attachments/assets/9b4a4ef1-3c89-490e-b2fc-f0f7598a75f3)
+
 
 ## Overview
 This repository contains the complete solution for the Accuknox DevOps Trainee Practical Assessment, covering:
