@@ -1,5 +1,8 @@
 # Accuknox DevOps Trainee Practical Assessment
 
+
+![Uploading image.png…]()
+
 ## Overview
 This repository contains the complete solution for the Accuknox DevOps Trainee Practical Assessment, covering:
 
