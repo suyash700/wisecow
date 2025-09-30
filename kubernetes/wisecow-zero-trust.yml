@@ -1,0 +1,40 @@
+apiVersion: security.kubearmor.com/v1
+kind: KubeArmorPolicy
+metadata:
+  name: wisecow-zero-trust
+  namespace: wisecow
+spec:
+  severity: high
+  selector:
+    matchLabels:
+      app: wisecow
+  process:
+    matchPaths:
+      - path: /usr/local/bin/wisecow
+        action: Block
+    matchDirectories:
+      - path: /
+        action: Block
+    matchProcesses:
+      - name: wisecow
+        action: Allow
+  file:
+    matchPaths:
+      - path: /app/data
+        action: Allow
+    matchDirectories:
+      - path: /
+        action: Block
+  network:
+    matchProtocols:
+      - protocol: tcp
+        action: Allow
+        destinationPorts:
+          - 4499
+    matchIngress:
+      - action: Allow
+        source:
+          cidr: "0.0.0.0/0"
+    matchEgress:
+      - action: Block
+wisecow-zero-trust.yaml
